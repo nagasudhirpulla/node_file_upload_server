@@ -2,7 +2,7 @@ import requests
 
 file = open(
     r'C:\Users\Nagasudhir\Documents\NodeJS Projects\file_upload_server\test.txt', 'rb')
-url = 'http://localhost:3000/upload'
+url = 'http://localhost:3002/upload'
 payload = {'dest': r'C:\Users\Nagasudhir\Desktop'}
 files = {'file': file}
 try:
