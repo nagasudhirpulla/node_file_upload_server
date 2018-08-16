@@ -28,6 +28,11 @@ router.post('/upload', upload.single('file'), (req, res, next) => {
     });
 });
 
+// for testing purpose
+router.get('/', (req, res, next) => {
+    return res.json({ 'message': 'Working!'});
+});
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
