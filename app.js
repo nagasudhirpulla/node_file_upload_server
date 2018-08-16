@@ -3,6 +3,7 @@ var router = express.Router();
 var multer = require('multer');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var copyFile = require('fs-copy-file');
 
 // configure multer diskStorage
 var storage = multer.diskStorage({
@@ -19,7 +20,7 @@ var upload = multer({ storage: storage });
 // listen to the post request and also use the multer middleware to get the uploaded file info
 router.post('/upload', upload.single('file'), (req, res, next) => {
     // copy the uploaded file to the desired destination which is supplied in the request body by dest field
-    fs.copyFile(req.file.path, req.body.dest + '\\' + req.file.originalname, err => {
+    copyFile(req.file.path, req.body.dest + '\\' + req.file.originalname, err => {
         if (err) {
             console.error(err);
             return res.json({ 'message': 'upload failed', 'error': err });
